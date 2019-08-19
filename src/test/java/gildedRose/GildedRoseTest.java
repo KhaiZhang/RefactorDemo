@@ -217,7 +217,7 @@ public class GildedRoseTest {
 
         normal_rose.reduceSellInIfNotSulfuras();
 
-        assertEquals(9,normal_rose.sellIn);
+        assertEquals(9,normal_rose.getSellIn());
     }
 
     @Test
@@ -228,7 +228,7 @@ public class GildedRoseTest {
 
         sulfuras.reduceSellInIfNotSulfuras();
 
-        assertEquals(10,sulfuras.sellIn);
+        assertEquals(10,sulfuras.getSellIn());
     }
 
 }

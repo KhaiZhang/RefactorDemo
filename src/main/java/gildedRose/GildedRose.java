@@ -8,7 +8,7 @@ public class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            switch (items[i].name){
+            switch (items[i].getName()){
                 case "Aged Brie":
                     items[i].updateAgedBrieQuality();
                     break;
