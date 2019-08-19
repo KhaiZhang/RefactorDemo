@@ -15,13 +15,10 @@ public class GildedRose {
                         continue;
                     }
                 }else {
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
                         if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                             updateBackStageQuality(items[i]);
                             continue;
                         }
-                    }
                 }
             } else {
                 updateAgedBrieQuality(items[i]);
@@ -57,15 +54,18 @@ public class GildedRose {
     }
 
     private void updateBackStageQuality(Item item) {
-        if (item.sellIn < 11) {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1;
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
+            if (item.sellIn < 11) {
+                if (item.quality < 50) {
+                    item.quality = item.quality + 1;
+                }
             }
-        }
 
-        if (item.sellIn < 6) {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1;
+            if (item.sellIn < 6) {
+                if (item.quality < 50) {
+                    item.quality = item.quality + 1;
+                }
             }
         }
         reduceSellInIfNotSulfuras(item);
