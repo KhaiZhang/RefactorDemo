@@ -57,6 +57,17 @@ public class Item {
         this.quality = quality;
     }
 
+    public void reduceQuality(int number){
+        setQuality(getQuality() - number);
+    }
+
+    public void improveQuality(int number){
+        setQuality(getQuality() + number);
+    }
+
+    public void reduceSellIn(int number){
+        setSellIn(getSellIn() - number);
+    }
     @Override
    public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
