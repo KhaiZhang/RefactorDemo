@@ -29,7 +29,9 @@ public class GildedRose {
             if (items[i].sellIn < 0) {
                 if (!items[i].name.equals("Aged Brie")) {
                     if (!items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        continue;
+                        if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")){
+                            continue;
+                        }
                     }
                 } else {
                     if (items[i].quality < 50) {
@@ -42,12 +44,12 @@ public class GildedRose {
 
     private void updateNormalItemQuality(Item item) {
         if (item.quality > 0) {
-                item.quality = item.quality - 1;
+            item.quality = item.quality - 1;
         }
         reduceSellInIfNotSulfuras(item);
         if (item.sellIn < 0){
             if (item.quality > 0) {
-                    item.quality = item.quality - 1;
+                item.quality = item.quality - 1;
             }
         }
     }
