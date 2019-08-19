@@ -209,26 +209,4 @@ public class GildedRoseTest {
         assertEquals("normal rose, 14, 29", normal_rose.toString());
     }
 
-    @Test
-    public void should_reduce_SellIn_given_not_Sulfuras_item_its_sellIn_is_10() {
-        Item normal_rose = new Item("normal rose", 10, 30);
-        Item[] items = new Item[]{normal_rose};
-        GildedRose gildedRose = new GildedRose(items);
-
-        normal_rose.reduceSellInIfNotSulfuras();
-
-        assertEquals(9,normal_rose.getSellIn());
-    }
-
-    @Test
-    public void should_keep_SellIn_given__Sulfuras_item_its_sellIn_is_10() {
-        Item sulfuras = new Item("Sulfuras, Hand of Ragnaros", 10, 30);
-        Item[] items = new Item[]{sulfuras};
-        GildedRose gildedRose = new GildedRose(items);
-
-        sulfuras.reduceSellInIfNotSulfuras();
-
-        assertEquals(10,sulfuras.getSellIn());
-    }
-
 }

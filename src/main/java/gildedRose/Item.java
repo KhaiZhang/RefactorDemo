@@ -8,10 +8,29 @@ public class Item {
 
     private int quality;
 
+    private ItemQualityRenewal itemQualityRenewal;
+
     public Item(String name, int sellIn, int quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
+    }
+
+    public ItemQualityRenewal getItemQualityRenewal() {
+        switch (this.getName()){
+            case "Aged Brie":
+                return new AgedBrieRenewal();
+            case "Backstage passes to a TAFKAL80ETC concert":
+                return new BackStageRenewal();
+            case "Sulfuras, Hand of Ragnaros":
+                return new SulfurasRenewal();
+            default:
+                return new NormalItemRenewal();
+        }
+    }
+
+    public void setItemQualityRenewal(ItemQualityRenewal itemQualityRenewal) {
+        this.itemQualityRenewal = itemQualityRenewal;
     }
 
     public String getName() {
@@ -43,53 +62,7 @@ public class Item {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 
-    protected void reduceSellInIfNotSulfuras() {
-        if (!name.equals("Sulfuras, Hand of Ragnaros")) {
-            sellIn = sellIn - 1;
-        }
-    }
-
-    void updateAgedBrieQuality() {
-        if (quality < 50) {
-            quality = quality + 1;
-        }
-        reduceSellInIfNotSulfuras();
-        if(sellIn < 0){
-            if (quality < 50) {
-                quality = quality + 1;
-            }
-        }
-    }
-
-    void updateNormalItemQuality() {
-        if (quality > 0) {
-            quality = quality - 1;
-        }
-        reduceSellInIfNotSulfuras();
-        if (sellIn < 0){
-            if (quality > 0) {
-                quality = quality - 1;
-            }
-        }
-    }
-
-    void updateBackStageQuality() {
-        if (quality < 50) {
-            quality = quality + 1;
-            if (sellIn < 11) {
-                if (quality < 50) {
-                    quality = quality + 1;
-                }
-            }
-            if (sellIn < 6) {
-                if (quality < 50) {
-                    quality = quality + 1;
-                }
-            }
-        }
-        reduceSellInIfNotSulfuras();
-        if (sellIn < 0){
-            quality  = 0;
-        }
+    public void update(){
+        getItemQualityRenewal().updateQuality(this);
     }
 }
