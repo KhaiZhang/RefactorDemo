@@ -215,7 +215,7 @@ public class GildedRoseTest {
         Item[] items = new Item[]{normal_rose};
         GildedRose gildedRose = new GildedRose(items);
 
-        gildedRose.reduceSellInIfNotSulfuras(normal_rose);
+        normal_rose.reduceSellInIfNotSulfuras();
 
         assertEquals(9,normal_rose.sellIn);
     }
@@ -226,7 +226,7 @@ public class GildedRoseTest {
         Item[] items = new Item[]{sulfuras};
         GildedRose gildedRose = new GildedRose(items);
 
-        gildedRose.reduceSellInIfNotSulfuras(sulfuras);
+        sulfuras.reduceSellInIfNotSulfuras();
 
         assertEquals(10,sulfuras.sellIn);
     }
